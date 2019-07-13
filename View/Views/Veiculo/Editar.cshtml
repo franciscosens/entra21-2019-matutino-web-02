@@ -1,0 +1,59 @@
+﻿
+@{
+    ViewBag.Title = "Cadastro";
+}
+
+<h3 class="text-center mb-3 mt-3 text-info">Edição de Veículo</h3>
+
+<form method="post" action="/veiculo/update">
+    <input type="hidden" name="id" value="@ViewBag.Veiculo.Id" />
+
+    <div class="row">
+        <div class="col-12">
+            <div class="form-group">
+                <label for="campo-modelo">Modelo</label>
+                <input type="text" name="modelo" id="campo-modelo" class="form-control" value="@ViewBag.Veiculo.Modelo" />
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <div class="form-group">
+                <label form="campo-categoria">Categoria</label>
+                <select class="form-control" name="categoria">
+                    <option disabled="disabled" selected="selected">Selecione uma categoria</option>
+                    @foreach (Model.Categoria categoria in ViewBag.Categorias)
+                    {
+                        if (categoria.Id == ViewBag.Veiculo.IdCategoria)
+                        {
+                            <option value="@categoria.Id" selected="selected">@categoria.Nome</option>
+                        }
+                        else
+                        {
+                            <option value="@categoria.Id">@categoria.Nome</option>
+                        }
+                    }
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div class="form-group">
+                <label for="campo-valor">Valor</label>
+                <input type="text" name="valor" id="campo-valor" class="form-control" value="@ViewBag.Veiculo.Valor"/>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <button type="submit" class="btn btn-success float-right">
+                <i class="fas fa-save"></i> Salvar
+            </button>
+        </div>
+    </div>
+
+
+</form>

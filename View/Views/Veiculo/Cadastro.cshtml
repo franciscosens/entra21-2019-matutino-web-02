@@ -3,21 +3,49 @@
     ViewBag.Title = "Cadastro";
 }
 
-<h3>Cadastro de Veículo</h3>
+<h3 class="text-center mb-3 mt-3 text-info">Cadastro de Veículo</h3>
 
 <form method="post" action="/veiculo/store">
-    
+
     <div class="row">
         <div class="col-12">
             <div class="form-group">
-                <label for="campo-nome">
-                    Nome</label>
-                <input type="text" name="nome"          id="campo-nome" 
-                       class="form-control" />
+                <label for="campo-modelo">Modelo</label>
+                <input type="text" name="modelo" id="campo-modelo" class="form-control" />
             </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <div class="form-group">
+                <label form="campo-categoria">Categoria</label>
+                <select class="form-control" name="categoria">
+                    <option disabled="disabled" selected="selected">Selecione uma categoria</option>
+                    @foreach(Model.Categoria categoria in ViewBag.Categorias)
+                    {
+                        <option value="@categoria.Id">@categoria.Nome</option>
+                    }
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div class="form-group">
+                <label for="campo-valor">Valor</label>
+                <input type="text" name="valor" id="campo-valor" class="form-control" />
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <button type="submit" class="btn btn-success float-right">
+                <i class="fas fa-save"></i> Salvar
+            </button>
         </div>
     </div>
 
 
 </form>
-
